@@ -1,0 +1,59 @@
+{% extends "marketdata/base.html" %}
+
+{% block title %}Number Of Listings Today{% endblock %}
+
+{% block main %}
+
+
+{% if chart_html %}
+<div>
+<div style = width:100% ; height:100%>
+{{chart_html|safe}}
+</div>
+<div class="card mb-4">
+    <div class="card-header">
+        <i class="fas fa-table me-1"></i>
+        Current Table
+    </div>
+    <div class="card-body">
+        <table id="datatablesSimple", style = width:100% ; height:100%>
+            <thead>
+                <tr>
+                    <th>query_id</th>
+                    <th>datetime</th>
+                    <th>city</th>
+                    <th>total_records</th>
+                </tr>
+            </thead>
+            <tfoot>
+                <tr>
+                    <th>query_id</th>
+                    <th>datetime</th>
+                    <th>city</th>
+                    <th>total_records</th>
+                </tr>
+            </tfoot>
+            <tbody>
+                {% if table_values %}
+                {% for point in table_values %}
+                <tr>
+                <th>{{ point.query_id }}</th>
+                <th>{{ point.datetime }}</th>
+                <th>{{ point.city }}</th>
+                <th>{{ point.total_records }}</th>
+                {% endfor %}
+                {% else %}
+                <p>No table_values was provided.</p>
+                {% endif %}
+            </tbody>
+        </table>
+    </div>
+</div>
+</div>
+</div>
+{% else %}
+
+<p>No chart_html data was provided.</p>
+{% endif %}
+
+{% endblock %}

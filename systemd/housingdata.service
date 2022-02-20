@@ -1,0 +1,12 @@
+[Unit]
+Description=HousingData Website
+
+[Service]
+User=pi
+Group=pi
+WorkingDirectory=/home/pi/Realtor/housingdata/housingdata
+EnvironmentFile=/home/pi/Realtor/etc/housingdata.env
+ExecStart=/home/pi/.local/bin/gunicorn -c conf/gunicorn_config.py wsgi
+
+[Install]
+WantedBy=multi-user.target

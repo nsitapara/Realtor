@@ -1,0 +1,84 @@
+{% extends "marketdata/base.html" %}
+
+{% block title %}Dashboard{% endblock %}
+
+{% block main %}
+<!-- http://js-grid.com/getting-started/ -->
+<div class="container-fluid px-4">
+    <h1 class="mt-4">Dashboard</h1>
+    <div class="row">
+        <div class="col-xl-6">
+            <div class="card mb-4">
+                <div class="card-header">
+                    <i class="fas fa-chart-area me-1"></i>
+                    Area Chart Example
+                </div>
+                <div id="jsGrid"></div>
+            </div>
+        </div>
+        <div class="col-xl-6">
+            <div class="card mb-4">
+                <div class="card-header">
+                    <i class="fas fa-chart-bar me-1"></i>
+                    Bar Chart Example
+                </div>
+                <div class="card-body"><canvas id="myBarChart" width="100%" height="40"></canvas></div>
+            </div>
+        </div>
+    </div>
+    <div class="card mb-4">
+        <div class="card-header">
+            <i class="fas fa-table me-1"></i>
+            Current Table
+        </div>
+        <div class="card-body">
+            <table id="datatablesSimple">
+                <thead>
+                    <tr>
+                        <th>id</th>
+                        <th>city</th>
+                        <th>line</th>
+                        <th>postal_code</th>
+                        <th>state</th>
+                        <th>county</th>
+                        <th>price</th>
+                        <th>link_id</th>
+                    </tr>
+                </thead>
+                <tfoot>
+                    <tr>
+                        <th>id</th>
+                        <th>city</th>
+                        <th>line</th>
+                        <th>postal_code</th>
+                        <th>state</th>
+                        <th>county</th>
+                        <th>price</th>
+                        <th>link_id</th>
+                    </tr>
+                </tfoot>
+                <tbody>
+                    {% if table_values %}
+                    {% for point in table_values %}
+                    <tr>
+                    <td>{{ point.id }}</td>
+                    <td>{{ point.city }}</td>
+                    <td>{{ point.line }}</td>
+                    <td>{{ point.postal_code }}</td>
+                    <td>{{ point.state }}</td>
+                    <td>{{ point.county }}</td>
+                    <td>{{ point.price }}</td>
+                    <td>{{ point.link_id }}</td>
+                    {% endfor %}
+                    {% else %}
+                    <p>No table_values was provided.</p>
+                    {% endif %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+
+{% endblock %}
+

@@ -1,0 +1,57 @@
+{% extends "marketdata/base.html" %}
+
+{% block title %}Bar Overtime Chart{% endblock %}
+
+{% block main %}
+
+
+{% if chart_html %}
+<div>
+<div style = width:100% ; height:100%>
+{{chart_html|safe}}
+</div>
+<!-- <div class="card mb-4">
+    <div class="card-header">
+        <i class="fas fa-table me-1"></i>
+        Current Table
+    </div>
+    <div class="card-body">
+        <table id="datatablesSimple", style = width:100% ; height:100%>
+            <thead>
+                <tr>
+                    <th>query_id</th>
+                    <th>datetime</th>
+                    <th>city</th>
+                    <th>total_records</th>
+                </tr>
+            </thead>
+            <tfoot>
+                <tr>
+                    <th>date</th>
+                    <th>city</th>
+                    <th>price</th>
+                </tr>
+            </tfoot>
+            <tbody>
+                {% if table_values %}
+                {% for point in table_values %}
+                <tr>
+                <td>{{ point.date }}</td>
+                <td>{{ point.city }}</td>
+                <td>{{ point.price }}</td>
+                {% endfor %}
+                {% else %}
+                <p>No table_values was provided.</p>
+                {% endif %}
+            </tbody>
+        </table>
+    </div>
+</div>
+</div>
+</div> -->
+{% else %}
+
+<p>No chart_html data was provided.</p>
+{% endif %}
+
+{% endblock %}
